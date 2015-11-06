@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>BabylonJS - Espilit demo</title>
+    <script src="scripts/hand.minified-1.2.js"></script>
+    <script src="scripts/Oimo.js"></script>
+    <script src="scripts/babylon.js"></script>
+    <script src="scripts/main.js"></script>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #renderCanvas {
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+            -ms-touch-action: none;
+        }
+
+        #lcContainer {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="renderCanvas"></canvas>
+    <div id="lcContainer">
+        <ul id="listColliders">
+        </ul>
+    </div>
+</body>
+</html>

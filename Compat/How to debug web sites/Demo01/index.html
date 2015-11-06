@@ -1,0 +1,34 @@
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+    <p>Hello your browser is <span id="browser"></span></p>
+    <script language="javascript">
+        //Old way, not recommenced, don't do this!
+        var IE11UserAgent = "Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; .NET4.0E; .NET4.0C; .NET CLR 3.5.30729; .NET CLR 2.0.50727; .NET CLR 3.0.30729; Tablet PC 2.0; InfoPath.3; rv:11.0) like Gecko";
+        if (navigator.userAgent.indexOf(IE11UserAgent) > -1) {
+            document.getElementById('browser').innerHTML = "IE 11";
+        }
+
+        //Jquery way, don't do it either
+        //if ($.browser.msie) {
+        //    document.getElementById('browser').innerHTML = "IE 11";
+        //}
+
+        if ('localStorage' in window) {
+            // Now use local storage
+            document.getElementById('browser').innerHTML += "<br />supporting local storage";
+        }
+        
+        if (window.addEventListener) {
+            // Browser supports "addEventListener"
+            document.getElementById('browser').innerHTML += "<br /> supporting addEventListener";
+        } else if (window.attachEvent) {
+            // Browser supports "attachEvent"
+            document.getElementById('browser').innerHTML += "<br /> supporting attachEvent";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Hey I am demo 02-02</title>
+    <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+    <p class="mainText">This is an awesome IE demo</p>
+    <p class="mainText">Hit F12 to see the magic happen</p>
+    <script language="javascript">
+        var computeCirc2 = function (PI, r) {
+            window.console.debug("Computing circonference using PI, and r", PI, r);
+            var circ;
+
+            //user thrown error
+            if (!r) {
+                window.console.error("r is not defined", r);
+                return;
+            }
+            if (!PI) {
+                window.console.error("r is not defined", r);
+                return;
+            }
+
+            circ = 2 * PI * r;
+            console.debug("Circonference is:", circ);
+            return circ;
+        };
+
+        var computeCirc = function (PI, r) {
+            window.console.warn("computeCirc is deprecated. Please use computeCirc2 instead");
+            return 2 * PI * r;
+        };
+
+        var PI = 3.14;
+        var r = 2, circ;
+
+        var circ = computeCirc(PI, r);
+        var circ2 = computeCirc2(PI, r);
+
+        //Explicit logging
+
+        //logging as a dom element
+        console.dirxml(document.body);
+
+        //logging as an object with properties
+        console.dir(document.body);
+    </script>
+</body>
+</html>

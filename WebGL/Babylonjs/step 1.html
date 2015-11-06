@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <title>Babylon.js sample code</title>
+        <!-- Babylon.js -->
+        <script src="http://www.babylonjs.com/hand.minified-1.2.js"></script>
+        <script src="http://www.babylonjs.com/cannon.js"></script>
+        <script src="http://www.babylonjs.com/babylon.js"></script>
+        <style>
+            html, body {
+                overflow: hidden;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            #renderCanvas {
+                width: 100%;
+                height: 100%;
+                touch-action: none;
+            }
+        </style>
+    </head>
+<body>
+    <canvas id="renderCanvas"></canvas>
+    <script>
+        var canvas = document.getElementById("renderCanvas");
+        var engine = new BABYLON.Engine(canvas, true);
+
+        var createScene = function () {
+            var scene = new BABYLON.Scene(engine);
+        
+            var camera = new BABYLON.ArcRotateCamera("Camera", 3 * Math.PI / 2, Math.PI / 8, 50, BABYLON.Vector3.Zero(), scene);
+        
+            camera.attachControl(canvas, false);
+        
+            var light = new BABYLON.HemisphericLight("hemi", new BABYLON.Vector3(0, 1, 0), scene);
+        
+            //Creation of a box
+            //(name of the box, size, scene)
+            var box = BABYLON.Mesh.CreateBox("box", 6.0, scene);
+        
+            //Creation of a sphere 
+            //(name of the sphere, segments, diameter, scene) 
+            var sphere = BABYLON.Mesh.CreateSphere("sphere", 10.0, 10.0, scene);
+        
+            //Creation of a plan
+            //(name of the plane, size, scene)
+            var plan = BABYLON.Mesh.CreatePlane("plane", 10.0, scene);
+        
+            //Creation of a cylinder
+            //(name, height, diameter, tessellation, scene, updatable)
+            var cylinder = BABYLON.Mesh.CreateCylinder("cylinder", 3, 3, 3, 6, 1, scene, false);
+        
+            // Creation of a torus
+            // (name, diameter, thickness, tessellation, scene, updatable)
+            var torus = BABYLON.Mesh.CreateTorus("torus", 5, 1, 32, scene, false);
+        
+            // Creation of a knot
+            // (name, radius, tube, radialSegments, tubularSegments, p, q, scene, updatable)
+            knot = BABYLON.Mesh.CreateTorusKnot("knot", 2, 0.5, 128, 64, 2, 3, scene);
+        
+            // Creation of a lines mesh
+            var lines = BABYLON.Mesh.CreateLines("lines", [
+                new BABYLON.Vector3(-10, 0, 0),
+                new BABYLON.Vector3(10, 0, 0),
+                new BABYLON.Vector3(0, 0, -10),
+                new BABYLON.Vector3(0, 0, 10)
+            ], scene);
+        
+            // Moving elements
+            box.position = new BABYLON.Vector3(-10, 0, 0);   // Using a vector
+            sphere.position = new BABYLON.Vector3(0, 10, 0); // Using a vector
+            plan.position.z = 10;                            // Using a single coordinate component
+            cylinder.position.z = -10;
+            torus.position.x = 10;
+            knot.position.y = -10;
+        
+            return scene;
+        }
+        
+        var scene = createScene();
+
+        engine.runRenderLoop(function () {
+            knot.rotation.y += 0.01;
+            scene.render();
+        });
+
+        // Resize
+        window.addEventListener("resize", function () {
+            engine.resize();
+        });
+    </script>
+</body>
+</html>

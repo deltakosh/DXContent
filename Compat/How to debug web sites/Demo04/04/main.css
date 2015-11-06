@@ -1,0 +1,15 @@
+﻿body {
+}
+
+.centeredTitle {
+    text-align: center;
+    font-family: 'Segoe UI Light';
+    font-size: xx-large;
+}
+
+.square {
+    margin-left: calc(50vw - 200px);
+    background-color: darkblue;
+    height: 500px;
+    width: 400px;
+}

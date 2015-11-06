@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Hey I am demo 02-03</title>
+    <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+    <p class="mainText">This is an awesome IE demo</p>
+    <p class="mainText">Hit F12 to see the magic happen</p>
+    <button id="magicButton">Remove logs</button>
+    <script language="javascript">
+        //Timer usage
+        var iDoComplexStuff = function () {
+            //dostuff
+            console.timeEnd("asyncTime");
+        }
+
+        console.time("asyncTime");
+        setTimeout(iDoComplexStuff, 3000);
+
+        ////Grouping usage
+        var iDoOtherComplexStuff = function () {
+            console.group("iDoOtherComplexStuff");
+
+            console.log("Info 1");
+            console.log("Info 2");
+            console.log("Info 3");
+
+            console.groupEnd("iDoOtherComplexStuff");
+        }
+
+        iDoOtherComplexStuff();
+
+        //clear logs    
+        document.getElementById('magicButton').onclick = function (elem) {
+            window.console.clear();
+        }
+
+    </script>
+</body>
+</html>
